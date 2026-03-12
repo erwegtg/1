@@ -9,18 +9,12 @@ export interface ProviderConfig {
   modelId: string;
 }
 
-function normalizeBaseUrl(url: string): string {
-  const cleaned = url.replace(/\/+$/, "");
-  if (cleaned.endsWith("/v1")) return cleaned;
-  return cleaned + "/v1";
-}
-
 export function createLanguageModel(config: ProviderConfig): LanguageModel {
   switch (config.protocol) {
     case "openai": {
       const provider = createOpenAI({
         apiKey: config.apiKey,
-        baseURL: normalizeBaseUrl(config.baseUrl),
+        baseURL: config.baseUrl,
       });
       return provider.chat(config.modelId);
     }
