@@ -42,16 +42,15 @@ Each must be a SELF-SUFFICIENT image generation prompt containing:
 - The composition must work as a standalone frame
 
 === motionScript requirements ===
-- Write as TIME-SEGMENTED narrative using the format: "0-Xs：[detailed action]. Xs-Ys：[detailed action]. Ys-{duration}s：[detailed action]."
-- Divide the shot duration into 2-4 meaningful sub-segments based on the action rhythm
-- Each segment MUST include ALL of the following woven into one rich, flowing sentence:
-  • CHARACTER: specific body part movements (fingers tighten, jaw clenches, eyes widen), micro-expressions, muscle tension, breath
-  • ENVIRONMENT: dynamic environmental responses (wind stirs dust, light shifts, ground trembles, particles drift)
-  • CAMERA: exact camera movement and speed (camera slowly tilts down / camera slams forward / camera orbits the figure)
-  • ATMOSPHERE: sound/light/mood cues woven in (golden light bleeds through the cracks / sulfur hangs in the air)
-- Sentences should be rich and specific — vivid, cinematic — NOT generic summaries
-- Bad: "The boy draws the sword. Light appears." Good: "The boy's knuckles whiten as he wrenches the ancient sword free, golden-white light erupting along the dragon runes on the blade; the camera slams to an ultra-wide ground-level upshot as fissures race outward from his feet."
-- Example for a 8s shot: "0-3s: The boy's fingers lock around the hilt, knuckles draining white, the runes flaring gold in response to his will as a deep resonant hum rises through the stone beneath him; camera slowly rotates from overhead, pressing downward. 3-6s: He snarls and wrenches with his full weight, golden-white light exploding from the cracks in the rock and scorching the air around him; camera rockets upward tracking the blade. 6-8s: The sword clears the stone completely, the dragon rune along its length roaring to life, a column of light tearing the stormclouds apart; the boy tilts his head back slowly, golden sky reflected in his wide round eyes; camera locks on a low-angle close-up."
+- Write as TIME-SEGMENTED narrative: "0-2s: [action]. 2-4s: [action]. 4-6s: [action]. ..."
+- STRICT RULE: each segment spans AT MOST 3 seconds. A 10s shot = at least 4 segments. Never write a segment longer than 3s.
+- Each segment is ONE densely-packed sentence (50-80 words) that weaves together ALL four layers simultaneously:
+  • CHARACTER: exact body parts in motion — knuckles whiten, tendons flare, pupils contract, breath held, teeth clench; specify speed and force
+  • ENVIRONMENT: the world reacts — ground fissures spider outward, lamp posts buckle, sparks shower at a downward angle, black smoke billows and rolls on the wind, debris trajectories
+  • CAMERA: precise shot type + movement + speed — "camera slams to ground-level ultra-wide and rockets upward" / "camera holds on extreme close-up then whips right"
+  • PHYSICS/ATMOSPHERE: material details — the crack of metal, shockwave ripple in the air, heat distortion, light temperature shift, particle behavior
+- BAD (too vague, too long): "0-6s: The beast swings its claw and destroys the street. Camera moves in."
+- GOOD (specific, max 3s): "0-2s: The iron beast plants its right foreleg with a bone-shaking thud, spider-web cracks radiating six meters outward from the impact point, all three mechanical claw-sets rising in unison trailing hydraulic mist, its sensor eye pulsing deep red; camera low-angle wide, slowly tilting up. 2-4s: The leading claw whips across with a sub-sonic crack, shearing the lamp post mid-shaft in an eruption of blue-white sparks, the severed top spinning away at 45 degrees as chunks of asphalt and shredded metal scatter downward; camera holds mid-shot then slams into a fast push-in. 4-6s: Black smoke from ruptured pipes rolls and folds across the frame on the hot shockwave, debris still raining down, the beast's sensor eye locking onto its next target with a high-pitched hydraulic whine; camera slowly orbits right on a low angle, settling on the beast's silhouette."
 
 === sceneDescription requirements ===
 - Shared environment context for both frames
