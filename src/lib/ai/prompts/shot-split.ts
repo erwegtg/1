@@ -47,11 +47,11 @@ Each must be a SELF-SUFFICIENT image generation prompt containing:
 - Each segment MUST include ALL of the following woven into one rich, flowing sentence:
   • CHARACTER: specific body part movements (fingers tighten, jaw clenches, eyes widen), micro-expressions, muscle tension, breath
   • ENVIRONMENT: dynamic environmental responses (wind stirs dust, light shifts, ground trembles, particles drift)
-  • CAMERA: exact camera movement and speed (镜头缓缓下压 / 镜头猛然推近 / 镜头随人物旋转)
-  • ATMOSPHERE: sound/light/mood cues woven in (金色光芒从裂缝渗出 / 空气中弥漫硫磺气息)
-- Sentences should be 30-60 characters each — vivid, cinematic, specific — NOT generic summaries
-- Bad: "少年拔剑，光芒出现。" Good: "少年双手青筋暴起，猛然将古剑自岩石中拔出，金白圣光沿剑身龙纹喷薄而出，镜头贴地超广角仰拍，地面裂缝随光芒蔓延。"
-- Example for a 8s shot: "0-3s：少年十指死死扣住剑柄，指节泛白，符文感应到意志骤然亮起金色，嗡鸣声从地底透过岩石传来，镜头缓缓自俯视旋转下压。3-6s：少年咬牙低吼，以全身之力猛然拔剑，金白圣光从岩石裂缝迸射而出灼烧空气，镜头随拔剑动作急速向上推进。6-8s：古剑完全出鞘，龙纹苏醒发出震天龙吟，光柱冲天将乌云撕裂，少年缓缓仰头，圆眼中倒映出金色天际，镜头定格于仰视特写。"
+  • CAMERA: exact camera movement and speed (camera slowly tilts down / camera slams forward / camera orbits the figure)
+  • ATMOSPHERE: sound/light/mood cues woven in (golden light bleeds through the cracks / sulfur hangs in the air)
+- Sentences should be rich and specific — vivid, cinematic — NOT generic summaries
+- Bad: "The boy draws the sword. Light appears." Good: "The boy's knuckles whiten as he wrenches the ancient sword free, golden-white light erupting along the dragon runes on the blade; the camera slams to an ultra-wide ground-level upshot as fissures race outward from his feet."
+- Example for a 8s shot: "0-3s: The boy's fingers lock around the hilt, knuckles draining white, the runes flaring gold in response to his will as a deep resonant hum rises through the stone beneath him; camera slowly rotates from overhead, pressing downward. 3-6s: He snarls and wrenches with his full weight, golden-white light exploding from the cracks in the rock and scorching the air around him; camera rockets upward tracking the blade. 6-8s: The sword clears the stone completely, the dragon rune along its length roaring to life, a column of light tearing the stormclouds apart; the boy tilts his head back slowly, golden sky reflected in his wide round eyes; camera locks on a low-angle close-up."
 
 === sceneDescription requirements ===
 - Shared environment context for both frames
