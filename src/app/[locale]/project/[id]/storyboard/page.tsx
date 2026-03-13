@@ -6,6 +6,7 @@ import { ShotCard } from "@/components/editor/shot-card";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+import { useModelGuard } from "@/hooks/use-model-guard";
 import {
   Film,
   Sparkles,
@@ -88,6 +89,9 @@ export default function StoryboardPage() {
   const [generatingFrames, setGeneratingFrames] = useState(false);
   const [generatingVideos, setGeneratingVideos] = useState(false);
   const [videoRatio, setVideoRatio] = useState("16:9");
+  const textGuard = useModelGuard("text");
+  const imageGuard = useModelGuard("image");
+  const videoGuard = useModelGuard("video");
 
   if (!project) return null;
 
@@ -119,6 +123,7 @@ export default function StoryboardPage() {
 
   async function handleGenerateShots() {
     if (!project) return;
+    if (!textGuard()) return;
     setGenerating(true);
 
     try {
@@ -148,6 +153,7 @@ export default function StoryboardPage() {
 
   async function handleBatchGenerateFrames() {
     if (!project) return;
+    if (!imageGuard()) return;
     setGeneratingFrames(true);
 
     try {
@@ -170,6 +176,7 @@ export default function StoryboardPage() {
 
   async function handleBatchGenerateVideos() {
     if (!project) return;
+    if (!videoGuard()) return;
     setGeneratingVideos(true);
 
     try {
