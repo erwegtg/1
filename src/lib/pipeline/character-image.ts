@@ -2,6 +2,7 @@ import { db } from "@/lib/db";
 import { characters } from "@/lib/db/schema";
 import { resolveImageProvider } from "@/lib/ai/provider-factory";
 import type { ModelConfigPayload } from "@/lib/ai/provider-factory";
+import { buildCharacterTurnaroundPrompt } from "@/lib/ai/prompts/character-image";
 import { eq } from "drizzle-orm";
 import type { Task } from "@/lib/task-queue";
 
@@ -18,7 +19,7 @@ export async function handleCharacterImage(task: Task) {
   }
 
   const ai = resolveImageProvider(payload.modelConfig);
-  const prompt = `Character turnaround reference sheet showing front view, 3/4 view, side view, and back view of: ${character.description}. Anime/comic art style, clean white background, consistent proportions across all views, professional character design sheet.`;
+  const prompt = buildCharacterTurnaroundPrompt(character.description || character.name);
 
   const imagePath = await ai.generateImage(prompt, {
     size: "1792x1024", // wide format for turnaround sheet

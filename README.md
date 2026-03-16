@@ -182,13 +182,13 @@ src/
 
 ## Demo
 
-https://ladr-1258957911.cos.ap-guangzhou.myqcloud.com/vibe-coding/images/demo1.mp4
+https://www.bilibili.com/video/BV19rwVzUEeD/
 
-https://ladr-1258957911.cos.ap-guangzhou.myqcloud.com/vibe-coding/images/%E6%8B%B3%E5%87%BB%E6%AF%94%E8%B5%9B-final.mp4
+https://www.bilibili.com/video/BV1RrwVzUE3x/
 
-<video src="https://ladr-1258957911.cos.ap-guangzhou.myqcloud.com/vibe-coding/images/demo1.mp4" controls width="100%"></video>
+https://www.bilibili.com/video/BV15rwVzSEKZ/
 
-<video src="https://ladr-1258957911.cos.ap-guangzhou.myqcloud.com/vibe-coding/images/%E6%8B%B3%E5%87%BB%E6%AF%94%E8%B5%9B-final.mp4" controls width="100%"></video>
+
 
 ## License
 

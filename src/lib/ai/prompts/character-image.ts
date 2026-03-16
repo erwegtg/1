@@ -1,25 +1,29 @@
 export function buildCharacterTurnaroundPrompt(description: string): string {
-  return `Professional character model sheet — production-quality reference illustration for animation pipeline.
+  return `Everyday snapshot-style portrait photography, professional CCD camera with flash (not selfie). Character four-view reference sheet for production pipeline.
 
 === CHARACTER ===
 ${description}
 
 === LAYOUT ===
-Four orthographic views arranged LEFT to RIGHT on a single canvas:
-1. FRONT VIEW (facing camera directly)
-2. 3/4 VIEW (turned ~45° to the right)
-3. SIDE VIEW (perfect 90° profile, facing right)
-4. BACK VIEW (facing away from camera)
+Four portrait photographs arranged LEFT to RIGHT on a single pure white canvas:
+1. FRONT VIEW — facing camera directly, half-body (waist-up) shot
+2. THREE-QUARTER VIEW — turned ~45° to the right, showing depth and facial dimensionality
+3. SIDE PROFILE VIEW — perfect 90° profile facing right, showing hairstyle and silhouette
+4. BACK VIEW — facing away from camera, revealing hairstyle and back details
 
-=== ARTISTIC REQUIREMENTS ===
-Style: MATCH the art style described in the character description above. If the description says "photorealistic/写实真人", render as a photorealistic human (like a real photograph or high-end CG). If it says "anime/动漫", render in anime style. If it says "cartoon", render in cartoon style. NEVER default to anime if the description specifies realistic.
-Consistency: ALL four views must depict the EXACT same character with identical proportions, outfit, colors, and details
-Proportions: Clean, accurate anatomy matching the specified style. Each view must be the same height — align feet and head across all four poses.
-Pose: Neutral standing pose in all views (arms slightly away from body to show costume detail). Relaxed, natural posture.
-Expression: Neutral-to-gentle expression in front and 3/4 views. Show the character's personality subtly through their resting expression.
-Clothing: Render fabric textures, folds, and material differences (leather vs cotton vs metal, etc.)
-Colors: Vivid, well-separated color palette. Maintain exact color consistency across all views.
-Background: Pure clean white (#FFFFFF). No gradients, no environment, no shadows on background.
-Lighting: Soft, even studio lighting from slightly above and in front. Minimal shadows to keep details readable.
-Quality: Professional quality, no artifacts. This is the definitive reference that all future frames must match.`;
+=== PHOTOGRAPHY STYLE ===
+- Everyday snapshot aesthetic: professional CCD camera + studio flash, not smartphone selfie
+- Clean pure white studio backdrop across all four shots — no environment, no distractions
+- Even frontal flash lighting that reveals skin texture, fabric detail, and hair strands
+- Low saturation, slightly desaturated color tone — realistic and film-like, not HDR or oversaturated
+- Half-body close-up framing (head to waist) consistent across all four shots
+
+=== CONSISTENCY REQUIREMENTS ===
+- All four views: IDENTICAL character — same face structure, hair, skin tone, outfit, accessories, and proportions
+- Same framing height across all four shots — heads aligned at top, waist at bottom
+- Natural resting expression with subtle personality showing through
+- Relaxed, natural posture — not stiff, not posed dramatically
+
+=== QUALITY ===
+Professional quality, photorealistic, no artifacts, no AI tells. This is the definitive character reference that all future generated frames must match exactly.`;
 }

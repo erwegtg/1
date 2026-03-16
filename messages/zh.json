@@ -63,8 +63,8 @@
     "name": "角色名",
     "description": "角色描述",
     "referenceImage": "参考图",
-    "generateImage": "生成三视图",
-    "batchGenerateImages": "批量生成三视图",
+    "generateImage": "生成四视图",
+    "batchGenerateImages": "批量生成四视图",
     "noCharacters": "还没有角色，点击「角色解析」从剧本中提取角色"
   },
   "shot": {
