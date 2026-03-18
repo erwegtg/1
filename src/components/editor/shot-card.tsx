@@ -46,6 +46,7 @@ interface ShotCardProps {
   firstFrame: string | null;
   lastFrame: string | null;
   videoUrl: string | null;
+  sceneRefFrame?: string | null;
   status: string;
   dialogues: Dialogue[];
   onUpdate: () => void;
@@ -77,6 +78,7 @@ export function ShotCard({
   firstFrame,
   lastFrame,
   videoUrl,
+  sceneRefFrame,
   status,
   dialogues,
   onUpdate,
@@ -240,7 +242,7 @@ export function ShotCard({
         <div className="flex gap-1.5">
           {(generationMode === "reference"
             ? [
-                { src: firstFrame, icon: ImageIcon, label: t("shot.firstFrame"), type: "image" as const },
+                { src: sceneRefFrame, icon: ImageIcon, label: t("shot.firstFrame"), type: "image" as const },
                 { src: videoUrl, icon: VideoIcon, label: "Video", type: "video" as const },
               ]
             : [

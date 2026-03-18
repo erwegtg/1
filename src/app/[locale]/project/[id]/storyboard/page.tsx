@@ -477,6 +477,7 @@ export default function StoryboardPage() {
               duration={shot.duration}
               firstFrame={shot.firstFrame}
               lastFrame={shot.lastFrame}
+              sceneRefFrame={shot.sceneRefFrame}
               videoUrl={generationMode === "reference" ? shot.referenceVideoUrl : shot.videoUrl}
               status={
                 generationMode === "reference"

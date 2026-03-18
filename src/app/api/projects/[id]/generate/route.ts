@@ -1044,8 +1044,8 @@ async function handleSingleReferenceVideo(
       referenceImages: charRefs.map((c) => c.imagePath),
     });
 
-    // Save scene frame for display in UI
-    await db.update(shots).set({ firstFrame: sceneFramePath }).where(eq(shots.id, shotId));
+    // Save scene frame for display in UI (separate field — does not pollute firstFrame used by keyframe mode)
+    await db.update(shots).set({ sceneRefFrame: sceneFramePath }).where(eq(shots.id, shotId));
 
     // Step 2: Generate video using scene frame as initial image
     const videoProvider = resolveVideoProvider(modelConfig);
@@ -1185,8 +1185,8 @@ async function handleBatchReferenceVideo(
         referenceImages: charRefs.map((c) => c.imagePath),
       });
 
-      // Save scene frame for display
-      await db.update(shots).set({ firstFrame: sceneFramePath }).where(eq(shots.id, shot.id));
+      // Save scene frame for display (separate field — does not pollute firstFrame used by keyframe mode)
+      await db.update(shots).set({ sceneRefFrame: sceneFramePath }).where(eq(shots.id, shot.id));
 
       // Step 2: Generate video using scene frame as initial image
       const videoPrompt = shot.motionScript
