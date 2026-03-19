@@ -392,13 +392,12 @@ export function ShotDrawer({
                 {frameAssets.map((asset, i) => (
                   <div
                     key={i}
-                    className={`overflow-hidden rounded-lg border border-[--border-subtle] cursor-pointer hover:opacity-80 transition-opacity ${generationMode === "reference" ? "w-full" : "flex-1"}`}
-                    style={{ aspectRatio: "16/9" }}
+                    className={`overflow-hidden rounded-lg border border-[--border-subtle] bg-[--surface] cursor-pointer hover:opacity-80 transition-opacity ${generationMode === "reference" ? "w-full" : "flex-1"}`}
                     onClick={() => asset.src && setPreviewSrc(uploadUrl(asset.src))}
                   >
                     {asset.src
-                      ? <img src={uploadUrl(asset.src)} className="h-full w-full object-cover" alt={asset.label} />
-                      : <div className="flex h-full w-full items-center justify-center bg-[--surface]"><ImageIcon className="h-4 w-4 text-[--text-muted]" /></div>
+                      ? <img src={uploadUrl(asset.src)} className="w-full object-contain" alt={asset.label} />
+                      : <div className="flex h-16 items-center justify-center"><ImageIcon className="h-4 w-4 text-[--text-muted]" /></div>
                     }
                   </div>
                 ))}

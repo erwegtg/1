@@ -501,12 +501,12 @@ export function ShotCard({
               {frameAssets.map((asset, i) => (
                 <div
                   key={i}
-                  className={`h-16 overflow-hidden rounded-lg border border-[--border-subtle] ${asset.src ? "cursor-pointer hover:opacity-80 transition-opacity" : "flex items-center justify-center bg-[--surface]"}`}
+                  className={`overflow-hidden rounded-lg border border-[--border-subtle] bg-[--surface] ${asset.src ? "cursor-pointer hover:opacity-80 transition-opacity" : "flex h-16 items-center justify-center"}`}
                   style={{ width: generationMode === "reference" ? "100%" : "50%" }}
                   onClick={() => asset.src && setPreviewSrc(uploadUrl(asset.src))}
                 >
                   {asset.src
-                    ? <img src={uploadUrl(asset.src)} className="h-full w-full object-cover" />
+                    ? <img src={uploadUrl(asset.src)} className="w-full object-contain" />
                     : <ImageIcon className="h-4 w-4 text-[--text-muted]" />
                   }
                 </div>
