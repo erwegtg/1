@@ -5,7 +5,7 @@ import { useModelStore } from "@/stores/model-store";
 import { ShotCard } from "@/components/editor/shot-card";
 import { Button } from "@/components/ui/button";
 import { useTranslations, useLocale } from "next-intl";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import type { StoryboardVersion } from "@/stores/project-store";
 import { useModelGuard } from "@/hooks/use-model-guard";
 import {
@@ -20,6 +20,7 @@ import {
   Plus,
   LayoutGrid,
   List,
+  ChevronDown,
 } from "lucide-react";
 import { InlineModelPicker } from "@/components/editor/model-selector";
 import { VideoRatioPicker } from "@/components/editor/video-ratio-picker";
@@ -49,6 +50,8 @@ export default function StoryboardPage() {
   const [versions, setVersions] = useState<StoryboardVersion[]>([]);
   const [openDrawerShotId, setOpenDrawerShotId] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<"list" | "kanban">("list");
+  const [versionDropdownOpen, setVersionDropdownOpen] = useState(false);
+  const versionDropdownRef = useRef<HTMLDivElement>(null);
 
   function switchView(mode: "list" | "kanban") {
     setViewMode(mode);
@@ -399,7 +402,8 @@ export default function StoryboardPage() {
           {/* Version tabs */}
           {versions.length > 0 && (
             <div className="flex items-center gap-1">
-              {versions.map((v) => (
+              {/* Show 2 newest versions */}
+              {versions.slice(0, 2).map((v) => (
                 <button
                   key={v.id}
                   onClick={() => {
@@ -415,6 +419,46 @@ export default function StoryboardPage() {
                   {v.label}
                 </button>
               ))}
+              {/* Older versions dropdown */}
+              {versions.length > 2 && (
+                <div className="relative" ref={versionDropdownRef}>
+                  <button
+                    onClick={() => setVersionDropdownOpen((o) => !o)}
+                    className={`flex items-center gap-0.5 rounded-lg px-2.5 py-1.5 text-[13px] font-medium transition-colors ${
+                      versions.slice(2).some((v) => v.id === selectedVersionId)
+                        ? "bg-primary/10 text-primary"
+                        : "text-[--text-muted] hover:bg-[--surface] hover:text-[--text-secondary]"
+                    }`}
+                  >
+                    {versions.slice(2).some((v) => v.id === selectedVersionId)
+                      ? versions.find((v) => v.id === selectedVersionId)?.label
+                      : `+${versions.length - 2}`}
+                    <ChevronDown className={`h-3 w-3 transition-transform ${versionDropdownOpen ? "rotate-180" : ""}`} />
+                  </button>
+                  {versionDropdownOpen && (
+                    <div
+                      className="absolute right-0 top-full z-20 mt-1 min-w-[140px] overflow-hidden rounded-xl border border-[--border-subtle] bg-white shadow-lg"
+                      onMouseLeave={() => setVersionDropdownOpen(false)}
+                    >
+                      {versions.slice(2).map((v) => (
+                        <button
+                          key={v.id}
+                          onClick={() => {
+                            setSelectedVersionId(v.id);
+                            fetchProject(project!.id, v.id);
+                            setVersionDropdownOpen(false);
+                          }}
+                          className={`w-full px-3 py-2 text-left text-[13px] font-medium transition-colors hover:bg-[--surface] ${
+                            selectedVersionId === v.id ? "text-primary" : "text-[--text-secondary]"
+                          }`}
+                        >
+                          {v.label}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
               <button
                 onClick={handleGenerateShots}
                 disabled={anyGenerating}
