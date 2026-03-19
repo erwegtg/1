@@ -6,6 +6,7 @@ interface Character {
   name: string;
   description: string;
   referenceImage: string | null;
+  visualHint?: string | null;
 }
 
 interface Dialogue {
