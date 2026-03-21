@@ -40,6 +40,16 @@ import { assembleVideo } from "@/lib/video/ffmpeg";
 
 export const maxDuration = 300;
 
+/** Map user-facing ratio string to ImageOptions fields */
+function ratioToImageOpts(ratio?: string): { aspectRatio?: string; size?: string } {
+  switch (ratio) {
+    case "16:9":  return { aspectRatio: "16:9", size: "2560x1440" };
+    case "9:16":  return { aspectRatio: "9:16", size: "1440x2560" };
+    case "1:1":   return { aspectRatio: "1:1",  size: "2048x2048" };
+    default:      return { aspectRatio: "16:9", size: "2560x1440" };
+  }
+}
+
 /**
  * Check if a character is visible on-screen by looking for their name
  * in the videoScript or startFrameDesc fields.
@@ -683,6 +693,7 @@ async function handleBatchFrameGenerate(
   }
 
   const batchVersionId = payload?.versionId as string | undefined;
+  const imageOpts = ratioToImageOpts(payload?.ratio as string | undefined);
   const allShots = await db
     .select()
     .from(shots)
@@ -746,7 +757,7 @@ async function handleBatchFrameGenerate(
           characterDescriptions,
         });
         firstFramePath = await ai.generateImage(firstPrompt, {
-          size: "2560x1440",
+          ...imageOpts,
           quality: "hd",
           referenceImages: charRefImages,
         });
@@ -763,7 +774,7 @@ async function handleBatchFrameGenerate(
         firstFramePath,
       });
       const lastFramePath = await ai.generateImage(lastPrompt, {
-        size: "2560x1440",
+        ...imageOpts,
         quality: "hd",
         referenceImages: [firstFramePath, ...charRefImages],
       });
@@ -885,6 +896,7 @@ async function handleSingleFrameGenerate(
         .limit(1);
 
   const ai = resolveImageProvider(modelConfig, versionedUploadDir);
+  const imageOpts = ratioToImageOpts(payload?.ratio as string | undefined);
 
   try {
     await db.update(shots).set({ status: "generating" }).where(eq(shots.id, shotId));
@@ -900,6 +912,7 @@ async function handleSingleFrameGenerate(
         characterDescriptions,
       });
       firstFramePath = await ai.generateImage(firstPrompt, {
+        ...imageOpts,
         quality: "hd",
         referenceImages: charRefImages,
       });
@@ -912,6 +925,7 @@ async function handleSingleFrameGenerate(
       firstFramePath,
     });
     const lastFramePath = await ai.generateImage(lastPrompt, {
+      ...imageOpts,
       quality: "hd",
       referenceImages: [firstFramePath, ...charRefImages],
     });

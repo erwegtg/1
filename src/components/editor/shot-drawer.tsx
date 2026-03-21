@@ -155,7 +155,7 @@ export function ShotDrawer({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           action: "single_frame_generate",
-          payload: { shotId: shot!.id, versionId: selectedVersionId },
+          payload: { shotId: shot!.id, ratio: videoRatio, versionId: selectedVersionId },
           modelConfig: getModelConfig(),
         }),
       });

@@ -161,7 +161,7 @@ export default function StoryboardPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           action: "batch_frame_generate",
-          payload: { overwrite, versionId: selectedVersionId },
+          payload: { ratio: videoRatio, overwrite, versionId: selectedVersionId },
           modelConfig: getModelConfig(),
         }),
       });

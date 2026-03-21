@@ -229,7 +229,7 @@ export function ShotCard({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           action: "single_frame_generate",
-          payload: { shotId: id },
+          payload: { shotId: id, ratio: videoRatio },
           modelConfig: getModelConfig(),
         }),
       });
